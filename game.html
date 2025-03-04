@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>猜数字游戏</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            color: #ff69b4;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #5cb85c;
+            color: white;
+        }
+
+        #message {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>猜数字游戏</h1>
+    <p>我心里想了一个 1 到 100 之间的数字，你猜猜看是多少？</p>
+    <input type="number" id="guessInput" min="1" max="100">
+    <button id="guessButton">猜一猜</button>
+    <div id="message"></div>
+
+    <script>
+        const secretNumber = Math.floor(Math.random() * 100) + 1;
+        const guessInput = document.getElementById('guessInput');
+        const guessButton = document.getElementById('guessButton');
+        const message = document.getElementById('message');
+
+        guessButton.addEventListener('click', function () {
+            const userGuess = parseInt(guessInput.value);
+            if (isNaN(userGuess)) {
+                message.textContent = '请输入一个有效的数字！';
+            } else if (userGuess < secretNumber) {
+                message.textContent = '猜的数字太小了，再试试！';
+            } else if (userGuess > secretNumber) {
+                message.textContent = '猜的数字太大了，再试试！';
+            } else {
+                message.textContent = '恭喜你，猜对了！即将跳转到下一个页面...';
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 2000);
+            }
+        });
+    </script>
+</body>
+
+</html>
