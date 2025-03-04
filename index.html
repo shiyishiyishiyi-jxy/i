@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表白复合</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            color: #ff69b4;
+            font-size: 36px;
+            margin-bottom: 40px;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+        }
+
+        #agreeBtn {
+            background-color: #5cb85c;
+            color: white;
+        }
+
+        #disagreeBtn {
+            background-color: #d9534f;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>可以和好嘛</h1>
+    <button id="agreeBtn">同意</button>
+    <button id="disagreeBtn">不同意</button>
+
+    <script>
+        const agreeBtn = document.getElementById('agreeBtn');
+        const disagreeBtn = document.getElementById('disagreeBtn');
+
+        function increaseButtonSize() {
+            let currentSize = parseFloat(getComputedStyle(agreeBtn).fontSize);
+            let newSize = currentSize + 5;
+            agreeBtn.style.fontSize = newSize + 'px';
+            agreeBtn.style.padding = (parseFloat(getComputedStyle(agreeBtn).paddingTop) + 2) + 'px'+ (parseFloat(getComputedStyle(agreeBtn).paddingLeft) + 4) + 'px';
+        }
+
+        // 为同意按钮添加点击事件
+        agreeBtn.addEventListener('click', function () {
+            alert('太好啦，我们和好吧！');
+        });
+
+        // 为不同意按钮添加点击事件
+        disagreeBtn.addEventListener('click', increaseButtonSize);
+    </script>
+</body>
+
+</html>
